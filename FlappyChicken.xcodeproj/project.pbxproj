@@ -12,7 +12,6 @@
 		6605405B1D8301FD00A5BA15 /* flappy2.png in Resources */ = {isa = PBXBuildFile; fileRef = 660540561D8301FD00A5BA15 /* flappy2.png */; };
 		6605405C1D8301FD00A5BA15 /* pipe1.png in Resources */ = {isa = PBXBuildFile; fileRef = 660540571D8301FD00A5BA15 /* pipe1.png */; };
 		6605405D1D8301FD00A5BA15 /* pipe2.png in Resources */ = {isa = PBXBuildFile; fileRef = 660540581D8301FD00A5BA15 /* pipe2.png */; };
-		66D31C5D1D8A2EA90059B6EF /* Hudson_EmpireBuilding_800x400.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 66D31C5C1D8A2EA90059B6EF /* Hudson_EmpireBuilding_800x400.jpg */; };
 		66D31C631D8A30940059B6EF /* heart_red_60x60.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D31C621D8A30940059B6EF /* heart_red_60x60.png */; };
 		66D31C651D8A31DC0059B6EF /* bg_river.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D31C641D8A31DC0059B6EF /* bg_river.png */; };
 		66D31C671D8A494A0059B6EF /* Axel_F.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 66D31C661D8A494A0059B6EF /* Axel_F.mp3 */; };
@@ -37,7 +36,6 @@
 		660540561D8301FD00A5BA15 /* flappy2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flappy2.png; sourceTree = "<group>"; };
 		660540571D8301FD00A5BA15 /* pipe1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pipe1.png; sourceTree = "<group>"; };
 		660540581D8301FD00A5BA15 /* pipe2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pipe2.png; sourceTree = "<group>"; };
-		66D31C5C1D8A2EA90059B6EF /* Hudson_EmpireBuilding_800x400.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Hudson_EmpireBuilding_800x400.jpg; sourceTree = "<group>"; };
 		66D31C621D8A30940059B6EF /* heart_red_60x60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart_red_60x60.png; sourceTree = "<group>"; };
 		66D31C641D8A31DC0059B6EF /* bg_river.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_river.png; sourceTree = "<group>"; };
 		66D31C661D8A494A0059B6EF /* Axel_F.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Axel_F.mp3; sourceTree = "<group>"; };
@@ -91,8 +89,9 @@
 				66F880F11D69F9AC0095C485 /* AppDelegate.swift */,
 				66F880F31D69F9AC0095C485 /* GameScene.sks */,
 				66F880F51D69F9AC0095C485 /* Actions.sks */,
-				66F880F71D69F9AC0095C485 /* GameScene.swift */,
 				66F880F91D69F9AC0095C485 /* GameViewController.swift */,
+				66F880F71D69F9AC0095C485 /* GameScene.swift */,
+				66F880FB1D69F9AC0095C485 /* Main.storyboard */,
 				660540541D8301FD00A5BA15 /* bg.png */,
 				66D31C641D8A31DC0059B6EF /* bg_river.png */,
 				660540551D8301FD00A5BA15 /* flappy1.png */,
@@ -102,12 +101,10 @@
 				66D31C621D8A30940059B6EF /* heart_red_60x60.png */,
 				66DB72971D8AE90400B0166B /* hotdog_60x60.png */,
 				66E6EAB41D89C7AE00B5DC52 /* lighting.png */,
-				66D31C5C1D8A2EA90059B6EF /* Hudson_EmpireBuilding_800x400.jpg */,
 				66F0D54E1D85CF9900DD7C45 /* Stevens EAS.JPG */,
 				66DB72951D8AE14500B0166B /* castle2.jpg */,
 				66D31C661D8A494A0059B6EF /* Axel_F.mp3 */,
 				66F0D5501D85D72C00DD7C45 /* crazy frog - play the game.mp3 */,
-				66F880FB1D69F9AC0095C485 /* Main.storyboard */,
 				66F880FE1D69F9AC0095C485 /* Assets.xcassets */,
 				66F881001D69F9AC0095C485 /* LaunchScreen.storyboard */,
 				66F881031D69F9AD0095C485 /* Info.plist */,
@@ -175,7 +172,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66D31C5D1D8A2EA90059B6EF /* Hudson_EmpireBuilding_800x400.jpg in Resources */,
 				66F880FD1D69F9AC0095C485 /* Main.storyboard in Resources */,
 				66E6EAB51D89C7AE00B5DC52 /* lighting.png in Resources */,
 				66F880F41D69F9AC0095C485 /* GameScene.sks in Resources */,

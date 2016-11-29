@@ -24,6 +24,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var timer = Timer()
     var player : AVAudioPlayer = AVAudioPlayer()
     
+    var musicMuteLable = SKLabelNode()
+    var musicIsMuted = false
+    
+    
     enum ColliderType : UInt32 { // MUST add extends SKPhysicsContactDelegate class!!!
         case Bird = 1  // ..0000 0001
         case Pipe = 2  // and follow by 4,8,16,32.. bcz when have collide, we use case1 + case2 = 3 to identify them.
@@ -48,12 +52,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let removePipe = SKAction.removeFromParent()
         let moveAndRemovePipe = SKAction.sequence([movePipes, removePipe])
         
-        var gapHeight = (bird.size.height * 10)
-        if score > 20 {
-            gapHeight = gapHeight - CGFloat(20 * 20)
+        
+        var gapHeight = (bird.size.height * 12)
+        if score > 30 {
+            gapHeight = gapHeight - CGFloat(100 + (arc4random() % 500) )
         }else{
-            gapHeight = gapHeight - CGFloat(score * 20) // make the gap smaller and game harder.
+            gapHeight = gapHeight - CGFloat(score * 2) - CGFloat( arc4random() % 300 ) // make the gap smaller and game harder.
         }
+        
         
         let xPosition = self.frame.midX + self.frame.width
         let yPositionDif = pipeTexture1.size().height / 2 + gapHeight / 2
@@ -96,7 +102,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(gap)
         
         
-        if(score % 2 == 0){ // add one heart into game =====================================================
+        if(score % 3 == 0){ // add one heart into game =====================================================
             let heartTexture = SKTexture(imageNamed: "heart_red_60x60.png")
             let heartMovement = arc4random() % UInt32(self.frame.height / 2)
             let heartOffset = CGFloat(heartMovement) - self.frame.height / 4  // move up or down
@@ -118,9 +124,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-        if (score > 1) && (score % 5 == 0){ // add a boost mark into game =================================================
+        if (score > 1) && (score % 10 == 0){ // add a boost mark into game =================================================
             let lightingTexture = SKTexture(imageNamed: "lighting.png")
             let lighting = SKSpriteNode(texture: lightingTexture)
+            lighting.size = CGSize(width: 60, height: 60)
             lighting.position = gap.position
             lighting.zPosition = 2
             lighting.physicsBody = SKPhysicsBody(rectangleOf: lightingTexture.size())
@@ -133,7 +140,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(lighting)
         }
         
-        if (score > 1) && (score % 7) == 0 {  // point == 🌭
+        if (score > 1) && (score % 6) == 0 {  // point == 🌭
             let pointTexture = SKTexture(imageNamed: "hotdog_60x60.png")
             let pointMovement = arc4random() % UInt32(self.frame.height / 2)
             let pointOffset = CGFloat(pointMovement) - self.frame.height / 4 // move up, move down
@@ -293,14 +300,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         timer = Timer.scheduledTimer(timeInterval: pipeTime, target: self, selector: #selector(makePipes), userInfo: nil, repeats: true)
         
         // set game score info label ===============================================================
-        scoreLabel.fontName = "Helvetica" // ? ??? ? ???? ??
+        scoreLabel.fontName = "Helvetica"
         scoreLabel.fontSize = 200
         scoreLabel.text = "0"
         scoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.height / 2 - 206) // move down from top of screen
         scoreLabel.zPosition = 3
         self.addChild(scoreLabel)
         
-        heartLabel.fontName = "Helvetica" // ????????????????????
         heartLabel.fontSize = 60
         heartLabel.text = "❤️"
         // heartLabel.position = CGPoint(x: self.frame.minX + CGFloat(65 * lifeCount) , y: self.frame.maxY - 65)
@@ -308,6 +314,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         heartLabel.zPosition = 3
         self.addChild(heartLabel)
 
+        musicMuteLable.text = "🎵"
+        musicMuteLable.fontSize = 80
+        musicMuteLable.position = CGPoint(x: self.frame.minX + 50, y: self.frame.minY + 100)
+        musicMuteLable.zPosition = 3
+        self.addChild(musicMuteLable)
+        
         // build the background and add to scene ===================================================
         // let bgTesture = SKTexture(imageNamed: "bg.png")
         let bgTesture = SKTexture(imageNamed: "Stevens EAS.JPG")
@@ -403,6 +415,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        let touch = touches.first! as UITouch
+        let locationOnScreen = touch.location(in: self)
+        
         if gameOver == true {
             score = 0
             lifeCount = 1
@@ -412,6 +427,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.removeAllChildren() // reset the seen as init
             self.setupGame()
         }
+        else if musicMuteLable.contains(locationOnScreen) {
+            if musicIsMuted {
+                musicIsMuted = false
+                player.play()
+                musicMuteLable.text = "🎵"
+            }else{
+                musicIsMuted = true
+                player.pause()
+                musicMuteLable.text = "🔇"
+            }
+        }
         else {
             let birdTexture1 = SKTexture(imageNamed: "flappy1.png") // flappy action img
         
@@ -419,7 +445,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             bird.physicsBody!.collisionBitMask = ColliderType.Bird.rawValue
             bird.physicsBody!.isDynamic = true;
             bird.physicsBody!.velocity = CGVector(dx: 0, dy: 0)
-            bird.physicsBody!.applyImpulse(CGVector(dx: 0, dy: 80)) // impulse oppsite direction and move distence of CGVector.
+            bird.physicsBody!.applyImpulse(CGVector(dx: 0, dy: 90)) // impulse oppsite direction and move distence of CGVector.
         }
         
     }
