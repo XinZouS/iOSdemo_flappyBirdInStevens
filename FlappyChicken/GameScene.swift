@@ -25,8 +25,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var player : AVAudioPlayer = AVAudioPlayer()
     
     var musicMuteLable = SKLabelNode()
-    var musicIsMuted = false
+    var musicIsMuted = false {
+        didSet{
+            musicMuteLable.text = musicIsMuted ? musicMuteIcon : musicPlayIcon
+        }
+    }
+    let musicPlayIcon:String = "🔔"
+    let musicMuteIcon:String = "🔕"
+
+    let heartIcon:String = "❤️"
     
+    let duckImg01 = #imageLiteral(resourceName: "StevensDuck01_100x68")
+    let duckImg02 = #imageLiteral(resourceName: "StevensDuck02_100x68")
+
     
     enum ColliderType : UInt32 { // MUST add extends SKPhysicsContactDelegate class!!!
         case Bird = 1  // ..0000 0001
@@ -41,8 +52,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func makePipes(){
         
         // add pipes into screen ====================================================
-        let pipeTexture1 = SKTexture(imageNamed: "pipe1.png") // upper pipe facing down
-        let pipeTexture2 = SKTexture(imageNamed: "pipe2.png") // bottom pipe facing up
+//        let pipeTexture1 = SKTexture(imageNamed: "pipe1.png") // upper pipe facing down
+//        let pipeTexture2 = SKTexture(imageNamed: "pipe2.png") // bottom pipe facing up
+        
+        let pipeTexture1 = SKTexture(image: #imageLiteral(resourceName: "flowers_182x1650"))
+        let pipeTexture2 = SKTexture(image: #imageLiteral(resourceName: "tower_bottom_190x1614"))
         
         // use random num generator to let pipe move up or down to screen:
         let movementAmount = arc4random() % UInt32(self.frame.height / 2) // range of 0 to 2^32.
@@ -53,7 +67,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let moveAndRemovePipe = SKAction.sequence([movePipes, removePipe])
         
         
-        var gapHeight = (bird.size.height * 12)
+        var gapHeight = (bird.size.height * 10)
         if score > 30 {
             gapHeight = gapHeight - CGFloat(100 + (arc4random() % 500) )
         }else{
@@ -140,13 +154,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(lighting)
         }
         
+        let pointMovement = arc4random() % UInt32(self.frame.height / 2)
+        let pointOffset = CGFloat(pointMovement) - self.frame.height / 4 // move up, move down
+        let movePoint = SKAction.move(by: CGVector(dx: -3 * self.frame.width, dy: -1.0 * CGFloat(movementAmount)), duration: TimeInterval(self.frame.width / 100))
+        let removePoint = SKAction.removeFromParent()
+        let moveAndRemovePoint = SKAction.sequence([movePoint, removePoint])
+
         if (score > 1) && (score % 6) == 0 {  // point == 🌭
             let pointTexture = SKTexture(imageNamed: "hotdog_60x60.png")
-            let pointMovement = arc4random() % UInt32(self.frame.height / 2)
-            let pointOffset = CGFloat(pointMovement) - self.frame.height / 4 // move up, move down
-            let movePoint = SKAction.move(by: CGVector(dx: -3 * self.frame.width, dy: -1.0 * CGFloat(movementAmount)), duration: TimeInterval(self.frame.width / 100))
-            let removePoint = SKAction.removeFromParent()
-            let moveAndRemovePoint = SKAction.sequence([movePoint, removePoint])
             
             let point = SKSpriteNode(texture: pointTexture)
             point.position = CGPoint(x: xPosition, y: self.frame.midY + pointOffset)
@@ -160,6 +175,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             self.addChild(point)
         }
+        
+        if (score > 1) && (score % 5) == 0 {
+            let pointTexture = SKTexture(image: #imageLiteral(resourceName: "pizza_60x60"))
+            let point = SKSpriteNode(texture: pointTexture)
+            point.position = CGPoint(x: xPosition + 60, y: self.frame.midY + pointOffset + 60)
+            point.zPosition = 2
+            point.physicsBody = SKPhysicsBody(texture: pointTexture, size: pointTexture.size())
+            point.physicsBody!.isDynamic = false
+            point.physicsBody!.contactTestBitMask = ColliderType.Bird.rawValue
+            point.physicsBody!.categoryBitMask = ColliderType.Point.rawValue
+            point.physicsBody!.collisionBitMask = ColliderType.Bird.rawValue
+            point.run(moveAndRemovePoint)
+            
+            self.addChild(point)
+            
+        }
+        
+        if (score > 1) && (score % 7) == 0 {
+            let pointTexture = SKTexture(image: #imageLiteral(resourceName: "meat_60x60"))
+            let point = SKSpriteNode(texture: pointTexture)
+            point.position = CGPoint(x: xPosition + 60, y: self.frame.midY + pointOffset - 60)
+            point.zPosition = 2
+            point.physicsBody = SKPhysicsBody(texture: pointTexture, size: pointTexture.size())
+            point.physicsBody!.isDynamic = false
+            point.physicsBody!.contactTestBitMask = ColliderType.Bird.rawValue
+            point.physicsBody!.categoryBitMask = ColliderType.Point.rawValue
+            point.physicsBody!.collisionBitMask = ColliderType.Bird.rawValue
+            point.run(moveAndRemovePoint)
+            
+            self.addChild(point)
+            
+        }
     }
     
     
@@ -169,7 +216,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func resumeNormalSpeed() {
         if self.speed > 2 {
             self.speed -= 3.0 // == boost
-            scoreLabel.fontSize -= 10
+            scoreLabel.fontSize -= 6
         }
         scoreLabel.fontColor = UIColor.white
         bird.physicsBody!.isDynamic = true
@@ -178,11 +225,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func popScoreLabel() {
         scoreLabel.fontColor = UIColor.yellow
-        scoreLabel.fontSize += 10
+        scoreLabel.fontSize += 6
     }
     func shinkScoreLabel() {
         scoreLabel.fontColor = UIColor.white
-        scoreLabel.fontSize -= 10
+        scoreLabel.fontSize -= 6
     }
     
     func didBegin(_ contact: SKPhysicsContact) { // detect collection ====================================
@@ -208,7 +255,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             lifeCount += 1
             if var heartStr = heartLabel.text {
-                heartStr += "❤️"
+                heartStr += heartIcon
                 heartLabel.text = heartStr
             }
             
@@ -249,16 +296,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.speed = 0 // stop the game
                 timer.invalidate()
                 player.stop()
+                UserDefaults.standard.set(musicIsMuted, forKey: "musicIsMuted")
                 gameOver = true
             
                 gameOverLabel.fontName = "Helvetica"
                 if score > bestScore {  // save the best record.
                     UserDefaults.standard.set(score, forKey: "bestScore")
-                    gameOverLabel.fontSize = 76
-                    gameOverLabel.text = "You break record! \(score)!"
+                    gameOverLabel.fontSize = 66
+                    gameOverLabel.fontColor = .yellow
+                    gameOverLabel.text = "New record! Score \(score)"
                 }else{
-                    gameOverLabel.fontSize = 56
-                    gameOverLabel.text = "Best score is: \(bestScore). Try again~"
+                    gameOverLabel.fontSize = 66
+                    gameOverLabel.fontColor = .cyan
+                    gameOverLabel.text = "Best score is: \(bestScore)"
                 }
                 gameOverLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 100)
                 gameOverLabel.zPosition = 3
@@ -270,13 +320,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 lifeCount -= 1;
                 if lifeCount > 1 {
-                    var heartStr = "❤️"
+                    var heartStr = heartIcon  //   "❤️"
                     for _ in 1...lifeCount {
-                        heartStr += "❤️"
+                        heartStr += heartIcon
                     }
                     heartLabel.text = heartStr
                 }else if lifeCount == 1 {
-                    heartLabel.text = "❤️"
+                    heartLabel.text = heartIcon
                 }
             }
             
@@ -301,27 +351,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // set game score info label ===============================================================
         scoreLabel.fontName = "Helvetica"
-        scoreLabel.fontSize = 200
+        scoreLabel.fontSize = 190
         scoreLabel.text = "0"
-        scoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.height / 2 - 206) // move down from top of screen
+        scoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.height / 2 - 216) // move down from top of screen
         scoreLabel.zPosition = 3
         self.addChild(scoreLabel)
         
         heartLabel.fontSize = 60
-        heartLabel.text = "❤️"
+        heartLabel.text = heartIcon
         // heartLabel.position = CGPoint(x: self.frame.minX + CGFloat(65 * lifeCount) , y: self.frame.maxY - 65)
         heartLabel.position = CGPoint(x: self.frame.midX , y: self.frame.maxY - 62)
         heartLabel.zPosition = 3
         self.addChild(heartLabel)
 
-        musicMuteLable.text = "🎵"
+        musicMuteLable.text = musicIsMuted ? musicMuteIcon : musicPlayIcon
         musicMuteLable.fontSize = 80
-        musicMuteLable.position = CGPoint(x: self.frame.minX + 50, y: self.frame.minY + 100)
+        musicMuteLable.position = CGPoint(x: self.frame.minX + 70, y: self.frame.minY + 100)
         musicMuteLable.zPosition = 3
         self.addChild(musicMuteLable)
         
         // build the background and add to scene ===================================================
-        // let bgTesture = SKTexture(imageNamed: "bg.png")
         let bgTesture = SKTexture(imageNamed: "Stevens EAS.JPG")
         // let moveBGAnimation = SKAction.move(by: CGVector(dx: -10, dy:0), duration: 0.1) // one way to move.
         // the BG will move by: left x within every 0.1 s, then make it forever and apply to bg.
@@ -346,13 +395,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // then add bird in front of the background: ==============================================
         
-        let birdTexture1 = SKTexture(imageNamed: "flappy1.png") // flappy action img
-        let birdTexture2 = SKTexture(imageNamed: "flappy2.png")
+//        let birdTexture1 = SKTexture(imageNamed: "flappy1.png") // flappy action img
+//        let birdTexture2 = SKTexture(imageNamed: "flappy2.png")
+        
+        let birdTexture1 = SKTexture(image: duckImg01)
+        let birdTexture2 = SKTexture(image: duckImg02)
         
         let animation = SKAction.animate(with: [birdTexture1, birdTexture2], timePerFrame: 0.2)
         let makeBirdFlap = SKAction.repeatForever(animation)
         
         bird = SKSpriteNode(texture: birdTexture1) // init bird to display
+//        bird.size = CGSize(width: 90, height: 60)   // can NOT change size, bcz pulse will also be change
         bird.position = CGPoint(x: self.frame.midX - 270, y: self.frame.midY)
         bird.zPosition = 2 // bird layout
         
@@ -388,7 +441,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(sky)
         
-        // background music setup ===============================================================
+        backgroundMusicSetup()
+        
+        loadTheBestScore()
+        
+    }
+    
+    func backgroundMusicSetup(){
         let selectSong = arc4random() % UInt32(2)
         var selectName = "Axel_F" // as default
         if selectSong == 0 {
@@ -396,21 +455,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         let audioPath = Bundle.main.path(forResource: selectName, ofType: "mp3")
         do{
-            try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!))            
-            player.volume = 0.8
+            try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!))
+            player.volume = 0.6
+            if let musicBeenMuted = UserDefaults.standard.object(forKey: "musicIsMuted") as? Bool {
+                if musicBeenMuted {
+                    player.stop()
+                    return
+                }
+            }
             player.play() // start background music
+
         }catch{
             print("loading plyaer URL failer at line 230")
         }
-        
+    }
+    
+    func loadTheBestScore() {
         // load the best score in record ========================================================
         if let restoreScore = UserDefaults.standard.object(forKey: "bestScore") {
             bestScore = restoreScore as! Int
         }else{
             bestScore = 0
         }
+
     }
-    
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -431,15 +499,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if musicIsMuted {
                 musicIsMuted = false
                 player.play()
-                musicMuteLable.text = "🎵"
+                musicMuteLable.text = musicPlayIcon
             }else{
                 musicIsMuted = true
                 player.pause()
-                musicMuteLable.text = "🔇"
+                musicMuteLable.text = musicMuteIcon
             }
         }
         else {
-            let birdTexture1 = SKTexture(imageNamed: "flappy1.png") // flappy action img
+//            let birdTexture1 = SKTexture(imageNamed: "flappy1.png") // flappy action img
+            let birdTexture1 = SKTexture(image: duckImg01)
         
             bird.physicsBody = SKPhysicsBody(circleOfRadius: birdTexture1.size().height / 2)
             bird.physicsBody!.collisionBitMask = ColliderType.Bird.rawValue
@@ -455,3 +524,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Called before each frame is rendered
     }
 }
+
+
+
+
+
+
+
+
+
