@@ -3,8 +3,8 @@ Attila the Duck will lead us to the great adventure on the campus of Stevens, yo
 
 Gets more hearts can let you fly longer, and lighting sign will boost duck and gain score; Duck eats food that floating around will let you get more score.
 ## Screenshots
-![alt text](iOSdemo_flappyBirdInStevens/FlappyChicken/Simulator Screen Shot Mar 14, 2017, 10.11.17 AM.png)
+![alt text](iOSdemo_flappyBirdInStevens/FlappyChicken/Simulator\ Screen\ Shot\ Mar\ 14,\ 2017,\ 10.11.17\ AM.png)
 
-![alt text](iOSdemo_flappyBirdInStevens/FlappyChicken/Simulator Screen Shot Mar 14, 2017, 10.11.20 AM.png)
+![alt text](iOSdemo_flappyBirdInStevens/FlappyChicken/Simulator\ Screen\ Shot\ Mar\ 14,\ 2017,\ 10.11.20\ AM.png)
 
 
