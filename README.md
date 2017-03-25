@@ -5,6 +5,6 @@ Gets more hearts can let you fly longer, and lighting sign will boost duck and g
 ## Screenshots
 ![alt text](https://github.com/XinZouS/iOSdemo_flappyBirdInStevens/blob/master/FlappyChicken/Simulator%20Screen%20Shot%20Mar%2014%2C%202017%2C%2010.11.17%20AM.png)
 
-![Alt text](FlappyChicken/Simulator\ Screen\ Shot\ Mar\ 14,\ 2017,\ 10.11.20\ AM.png?raw=true)
+![alt text](https://github.com/XinZouS/iOSdemo_flappyBirdInStevens/blob/master/FlappyChicken/Simulator%20Screen%20Shot%20Mar%2014%2C%202017%2C%2010.11.20%20AM.png)
 
 
