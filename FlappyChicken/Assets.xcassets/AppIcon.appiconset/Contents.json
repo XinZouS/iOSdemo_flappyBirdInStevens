@@ -3,7 +3,7 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "StevensDuckIcon-40.png",
+      "filename" : "StevensDuckIcon-20@2x-1.png",
       "scale" : "2x"
     },
     {
@@ -81,7 +81,7 @@
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "StevensDuckIcon-41.png",
+      "filename" : "StevensDuckIcon-40.png",
       "scale" : "1x"
     },
     {
@@ -149,7 +149,7 @@
     {
       "size" : "40x40",
       "idiom" : "watch",
-      "filename" : "StevensDuckIcon-77.png",
+      "filename" : "StevensDuckIcon-40@2x-2.png",
       "scale" : "2x",
       "role" : "appLauncher",
       "subtype" : "38mm"
@@ -171,7 +171,14 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "StevensDuckIcon-78.png",
+      "filename" : "StevensDuckIcon-42.png",
+      "unassigned" : true,
+      "scale" : "2x"
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "iphone",
+      "filename" : "StevensDuckIcon-76@2x-1.png",
       "unassigned" : true,
       "scale" : "2x"
     }

@@ -279,7 +279,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         else { // collide to pipe or ground, subtract lifeCount or game over.
             
-            if lifeCount < 1 ||     // life < 1 or touching ground, game over
+            if lifeCount < 1 ||     // life <= 1 or touching ground, game over
                 contact.bodyA.categoryBitMask == ColliderType.Ground.rawValue ||
                 contact.bodyB.categoryBitMask == ColliderType.Ground.rawValue {
                 
@@ -328,13 +328,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func gameOverImageShow(){
-        let bgTexture = SKTexture(image: #imageLiteral(resourceName: "StevensDucks"))
+        let bgTexture = SKTexture(image: #imageLiteral(resourceName: "goodJob"))
         gameOverImage = SKSpriteNode(texture: bgTexture)
         if UIDevice.current.userInterfaceIdiom == .phone {
-            gameOverImage.size = CGSize(width: (self.view?.bounds.width)! * 1.2, height: (self.view?.bounds.height)! * 0.75)
+            gameOverImage.size = CGSize(width: (self.view?.bounds.width)! * 1.2, height: (self.view?.bounds.height)! * 0.50)
         }
         if UIDevice.current.userInterfaceIdiom == .pad {
-            gameOverImage.size = CGSize(width: (self.view?.bounds.width)! * 0.5, height: (self.view?.bounds.height)! * 0.4)
+            gameOverImage.size = CGSize(width: (self.view?.bounds.width)! * 0.5, height: (self.view?.bounds.height)! * 0.26)
         }
         gameOverImage.position = CGPoint(x: self.frame.midX, y: self.frame.midY - self.frame.maxY * 0.4)
         gameOverImage.zPosition = 3

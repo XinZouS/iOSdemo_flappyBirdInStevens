@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		661AD7C61E86F515002CA95C /* Simulator Screen Shot Mar 13, 2017, 11.53.06 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 661AD7C51E86F515002CA95C /* Simulator Screen Shot Mar 13, 2017, 11.53.06 PM.png */; };
 		66D31C671D8A494A0059B6EF /* Axel_F.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 66D31C661D8A494A0059B6EF /* Axel_F.mp3 */; };
 		66DB72961D8AE14500B0166B /* castle2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 66DB72951D8AE14500B0166B /* castle2.jpg */; };
 		66F0D54F1D85CF9900DD7C45 /* Stevens EAS.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 66F0D54E1D85CF9900DD7C45 /* Stevens EAS.JPG */; };
@@ -19,12 +20,12 @@
 		66F880FD1D69F9AC0095C485 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66F880FB1D69F9AC0095C485 /* Main.storyboard */; };
 		66F880FF1D69F9AC0095C485 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66F880FE1D69F9AC0095C485 /* Assets.xcassets */; };
 		66F881021D69F9AC0095C485 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66F881001D69F9AC0095C485 /* LaunchScreen.storyboard */; };
-		66FF0A6F1E78A71900CBC224 /* Simulator Screen Shot Mar 14, 2017, 6.31.32 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 66FF0A6E1E78A71900CBC224 /* Simulator Screen Shot Mar 14, 2017, 6.31.32 PM.png */; };
 		66FF0A711E78A73500CBC224 /* Simulator Screen Shot Mar 14, 2017, 10.11.17 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 66FF0A701E78A73500CBC224 /* Simulator Screen Shot Mar 14, 2017, 10.11.17 AM.png */; };
 		66FF0A731E78A74500CBC224 /* Simulator Screen Shot Mar 14, 2017, 10.11.20 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 66FF0A721E78A74500CBC224 /* Simulator Screen Shot Mar 14, 2017, 10.11.20 AM.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		661AD7C51E86F515002CA95C /* Simulator Screen Shot Mar 13, 2017, 11.53.06 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Mar 13, 2017, 11.53.06 PM.png"; path = "../../../../Desktop/Simulator Screen Shot Mar 13, 2017, 11.53.06 PM.png"; sourceTree = "<group>"; };
 		66D31C661D8A494A0059B6EF /* Axel_F.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Axel_F.mp3; sourceTree = "<group>"; };
 		66DB72951D8AE14500B0166B /* castle2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = castle2.jpg; sourceTree = "<group>"; };
 		66F0D54E1D85CF9900DD7C45 /* Stevens EAS.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stevens EAS.JPG"; sourceTree = "<group>"; };
@@ -39,7 +40,6 @@
 		66F880FE1D69F9AC0095C485 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66F881011D69F9AC0095C485 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		66F881031D69F9AD0095C485 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		66FF0A6E1E78A71900CBC224 /* Simulator Screen Shot Mar 14, 2017, 6.31.32 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot Mar 14, 2017, 6.31.32 PM.png"; sourceTree = "<group>"; };
 		66FF0A701E78A73500CBC224 /* Simulator Screen Shot Mar 14, 2017, 10.11.17 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot Mar 14, 2017, 10.11.17 AM.png"; sourceTree = "<group>"; };
 		66FF0A721E78A74500CBC224 /* Simulator Screen Shot Mar 14, 2017, 10.11.20 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot Mar 14, 2017, 10.11.20 AM.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,7 +89,7 @@
 				66F881031D69F9AD0095C485 /* Info.plist */,
 				66FF0A721E78A74500CBC224 /* Simulator Screen Shot Mar 14, 2017, 10.11.20 AM.png */,
 				66FF0A701E78A73500CBC224 /* Simulator Screen Shot Mar 14, 2017, 10.11.17 AM.png */,
-				66FF0A6E1E78A71900CBC224 /* Simulator Screen Shot Mar 14, 2017, 6.31.32 PM.png */,
+				661AD7C51E86F515002CA95C /* Simulator Screen Shot Mar 13, 2017, 11.53.06 PM.png */,
 			);
 			path = FlappyChicken;
 			sourceTree = "<group>";
@@ -156,7 +156,6 @@
 			files = (
 				66F880FD1D69F9AC0095C485 /* Main.storyboard in Resources */,
 				66F880F41D69F9AC0095C485 /* GameScene.sks in Resources */,
-				66FF0A6F1E78A71900CBC224 /* Simulator Screen Shot Mar 14, 2017, 6.31.32 PM.png in Resources */,
 				66DB72961D8AE14500B0166B /* castle2.jpg in Resources */,
 				66D31C671D8A494A0059B6EF /* Axel_F.mp3 in Resources */,
 				66F880FF1D69F9AC0095C485 /* Assets.xcassets in Resources */,
@@ -166,6 +165,7 @@
 				66F0D54F1D85CF9900DD7C45 /* Stevens EAS.JPG in Resources */,
 				66FF0A731E78A74500CBC224 /* Simulator Screen Shot Mar 14, 2017, 10.11.20 AM.png in Resources */,
 				66F880F61D69F9AC0095C485 /* Actions.sks in Resources */,
+				661AD7C61E86F515002CA95C /* Simulator Screen Shot Mar 13, 2017, 11.53.06 PM.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
