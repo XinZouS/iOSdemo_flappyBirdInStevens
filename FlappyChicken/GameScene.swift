@@ -37,8 +37,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     let heartIcon:String = "❤️"
     
-    let duckImg01 = #imageLiteral(resourceName: "StevensDuck01_100x68")
-    let duckImg02 = #imageLiteral(resourceName: "StevensDuck02_100x68")
+    let duckImg01 = #imageLiteral(resourceName: "squral01")
+    let duckImg02 = #imageLiteral(resourceName: "squral02")
 
     
     enum ColliderType : UInt32 { // MUST add extends SKPhysicsContactDelegate class!!!
@@ -162,16 +162,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let removePoint = SKAction.removeFromParent()
         let moveAndRemovePoint = SKAction.sequence([movePoint, removePoint])
 
-        if score > 1 && (score % 5 == 0 || score % 6 == 0 || score % 11 == 0) {
+        if score > 1 && (score % 5 == 0 || score % 7 == 0 || score % 9 == 0 || score % 11 == 0) {
             var pointTexture = SKTexture()
-            if (score % 5) == 0 {
+            if (score % 9) == 0 {
                 pointTexture = SKTexture(image: #imageLiteral(resourceName: "hotdog_60x60"))
             }else
-            if (score % 6) == 0 {
+            if (score % 7) == 0 {
                 pointTexture = SKTexture(image: #imageLiteral(resourceName: "pizza_60x60"))
             }else
             if (score % 11) == 0 {
                 pointTexture = SKTexture(image: #imageLiteral(resourceName: "meat_60x60"))
+            }else
+            if (score % 5) == 0 {
+                pointTexture = SKTexture(image: #imageLiteral(resourceName: "nut_60x60"))
             }
             let point = SKSpriteNode(texture: pointTexture)
             point.position = CGPoint(x: xPosition, y: self.frame.midY + pointOffset)
@@ -210,9 +213,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.fontSize -= 6
     }
     func boostImageAnimate(duration: TimeInterval){
-        let texture = SKTexture(image: #imageLiteral(resourceName: "duckEarphone"))
+        let texture = SKTexture(image: #imageLiteral(resourceName: "speedup"))
         let sideLen = self.frame.width / 3
-        boostImage = SKSpriteNode(texture: texture, size: CGSize(width: sideLen, height: sideLen))
+        boostImage = SKSpriteNode(texture: texture, size: CGSize(width: sideLen * 1.5, height: sideLen))
         boostImage.position = CGPoint(x: self.frame.maxX + sideLen, y: self.frame.minY + sideLen)
         boostImage.zPosition = 4
         self.addChild(boostImage)

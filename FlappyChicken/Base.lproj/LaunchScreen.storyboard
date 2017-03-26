@@ -35,16 +35,18 @@
                                 <color key="textColor" red="0.61880296468734741" green="0.067259743809700012" blue="0.19940409064292908" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attila the Duck" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qV1-GS-pEw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adventure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qV1-GS-pEw">
                                 <rect key="frame" x="16" y="177" width="343" height="29.5"/>
                                 <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="24"/>
                                 <color key="textColor" red="0.92692074413007364" green="0.93321068134982577" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StevensDuck01_170x160" translatesAutoresizingMaskIntoConstraints="NO" id="N1G-ZX-kKa">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="squral_titleImg" translatesAutoresizingMaskIntoConstraints="NO" id="N1G-ZX-kKa">
                                 <rect key="frame" x="67" y="383" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="CVj-ok-YS5"/>
+                                    <constraint firstAttribute="height" constant="128" id="CVj-ok-YS5">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="360"/>
+                                    </constraint>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -71,7 +73,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="StevensDuck01_170x160" width="170" height="116"/>
         <image name="castle2.jpg" width="3024" height="4032"/>
+        <image name="squral_titleImg" width="471" height="341"/>
     </resources>
 </document>
