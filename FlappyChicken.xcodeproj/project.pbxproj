@@ -10,6 +10,7 @@
 		661AD7C81E86F921002CA95C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 661AD7C71E86F921002CA95C /* README.md */; };
 		6665EED81E8869D900C2C867 /* Simulator Screen Shot Mar 26, 2017, 4.49.53 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 6665EED61E8869D900C2C867 /* Simulator Screen Shot Mar 26, 2017, 4.49.53 PM.png */; };
 		6665EED91E8869D900C2C867 /* Simulator Screen Shot Mar 26, 2017, 4.50.25 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 6665EED71E8869D900C2C867 /* Simulator Screen Shot Mar 26, 2017, 4.50.25 PM.png */; };
+		668A40881EAD3D920048B166 /* HintPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668A40871EAD3D920048B166 /* HintPages.swift */; };
 		66D31C671D8A494A0059B6EF /* Axel_F.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 66D31C661D8A494A0059B6EF /* Axel_F.mp3 */; };
 		66DB72961D8AE14500B0166B /* castle2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 66DB72951D8AE14500B0166B /* castle2.jpg */; };
 		66F0D54F1D85CF9900DD7C45 /* Stevens EAS.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 66F0D54E1D85CF9900DD7C45 /* Stevens EAS.JPG */; };
@@ -28,6 +29,7 @@
 		661AD7C71E86F921002CA95C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6665EED61E8869D900C2C867 /* Simulator Screen Shot Mar 26, 2017, 4.49.53 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot Mar 26, 2017, 4.49.53 PM.png"; sourceTree = "<group>"; };
 		6665EED71E8869D900C2C867 /* Simulator Screen Shot Mar 26, 2017, 4.50.25 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot Mar 26, 2017, 4.50.25 PM.png"; sourceTree = "<group>"; };
+		668A40871EAD3D920048B166 /* HintPages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintPages.swift; sourceTree = "<group>"; };
 		66D31C661D8A494A0059B6EF /* Axel_F.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Axel_F.mp3; sourceTree = "<group>"; };
 		66DB72951D8AE14500B0166B /* castle2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = castle2.jpg; sourceTree = "<group>"; };
 		66F0D54E1D85CF9900DD7C45 /* Stevens EAS.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stevens EAS.JPG"; sourceTree = "<group>"; };
@@ -55,6 +57,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		668A40801EAB8EB00048B166 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				66F0D54E1D85CF9900DD7C45 /* Stevens EAS.JPG */,
+				66DB72951D8AE14500B0166B /* castle2.jpg */,
+				66D31C661D8A494A0059B6EF /* Axel_F.mp3 */,
+				66F0D5501D85D72C00DD7C45 /* crazy frog - play the game.mp3 */,
+			);
+			name = Media;
+			sourceTree = "<group>";
+		};
+		668A40811EAB8EDC0048B166 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				66F880F71D69F9AC0095C485 /* GameScene.swift */,
+				66F880F31D69F9AC0095C485 /* GameScene.sks */,
+				66F880F51D69F9AC0095C485 /* Actions.sks */,
+				668A40871EAD3D920048B166 /* HintPages.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		668A40821EAB8EE30048B166 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				66F880F91D69F9AC0095C485 /* GameViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		66F880E51D69F9AB0095C485 = {
 			isa = PBXGroup;
 			children = (
@@ -75,15 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				66F880F11D69F9AC0095C485 /* AppDelegate.swift */,
-				66F880F31D69F9AC0095C485 /* GameScene.sks */,
-				66F880F51D69F9AC0095C485 /* Actions.sks */,
-				66F880F91D69F9AC0095C485 /* GameViewController.swift */,
-				66F880F71D69F9AC0095C485 /* GameScene.swift */,
+				668A40821EAB8EE30048B166 /* Controller */,
+				668A40811EAB8EDC0048B166 /* View */,
+				668A40801EAB8EB00048B166 /* Media */,
 				66F880FB1D69F9AC0095C485 /* Main.storyboard */,
-				66F0D54E1D85CF9900DD7C45 /* Stevens EAS.JPG */,
-				66DB72951D8AE14500B0166B /* castle2.jpg */,
-				66D31C661D8A494A0059B6EF /* Axel_F.mp3 */,
-				66F0D5501D85D72C00DD7C45 /* crazy frog - play the game.mp3 */,
 				6665EED61E8869D900C2C867 /* Simulator Screen Shot Mar 26, 2017, 4.49.53 PM.png */,
 				6665EED71E8869D900C2C867 /* Simulator Screen Shot Mar 26, 2017, 4.50.25 PM.png */,
 				66F880FE1D69F9AC0095C485 /* Assets.xcassets */,
@@ -178,6 +205,7 @@
 				66F880F81D69F9AC0095C485 /* GameScene.swift in Sources */,
 				66F880FA1D69F9AC0095C485 /* GameViewController.swift in Sources */,
 				661AD7C81E86F921002CA95C /* README.md in Sources */,
+				668A40881EAD3D920048B166 /* HintPages.swift in Sources */,
 				66F880F21D69F9AC0095C485 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
