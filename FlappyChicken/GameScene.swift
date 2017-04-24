@@ -100,7 +100,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(heartLabel)
         heartLabel.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.maxY - 70), duration: 0.5))
         
-        musicIsMuted = UserDefaults.standard.object(forKey: "musicIsMuted") as! Bool
+        musicIsMuted = UserDefaults.standard.object(forKey: "musicIsMuted") as? Bool ?? true
         musicMuteLable.text = musicIsMuted ? musicMuteIcon : musicPlayIcon
         musicMuteLable.fontSize = 80
         musicMuteLable.position = CGPoint(x: self.frame.minX + 70, y: self.frame.minY + 100)
@@ -407,11 +407,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             UserDefaults.standard.set(score, forKey: "bestScore")
             gameOverLabel.fontSize = 56
             gameOverLabel.fontColor = .yellow
-            gameOverLabel.text = "New record! Score \(score)"
+            gameOverLabel.text = "New record! 🥇 \(score)"
         }else{
             gameOverLabel.fontSize = 56
             gameOverLabel.fontColor = .cyan
-            gameOverLabel.text = "Best score is: \(bestScore)"
+            gameOverLabel.text = "Best score was: \(bestScore)"
         }
         gameOverLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 100)
         gameOverLabel.zPosition = 4

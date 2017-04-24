@@ -105,7 +105,11 @@ class HintPages : SKSpriteNode {
     private var page03 : HintPageNode = {
         let p = HintPageNode()
         let scrW = UIScreen.main.bounds.width // 0.5 of real size
-        let scrH = UIScreen.main.bounds.height
+        var scrH: CGFloat = UIScreen.main.bounds.height
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            scrH = scrH / 2 + 150
+        }
         
         let ptrHeart = SKSpriteNode(imageNamed: "pointer_upRight")
         ptrHeart.position = CGPoint(x: -122, y: scrH - 150)
