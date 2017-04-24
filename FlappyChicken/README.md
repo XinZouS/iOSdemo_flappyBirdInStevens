@@ -5,7 +5,11 @@
 
 ## Screenshots
 
-![alt text](https://github.com/XinZouS/iOSdemo_flappyBirdInStevens/blob/master/FlappyChicken/Simulator%20Screen%20Shot%20Mar%2026%2C%202017%2C%204.49.53%20PM.png)
+![alt text](https://github.com/XinZouS/iOSdemo_flappyBirdInStevens/blob/master/FlappyChicken/screen01.png)
 
-![alt text](https://github.com/XinZouS/iOSdemo_flappyBirdInStevens/blob/master/FlappyChicken/Simulator%20Screen%20Shot%20Mar%2026%2C%202017%2C%204.50.25%20PM.png)
+![alt text](https://github.com/XinZouS/iOSdemo_flappyBirdInStevens/blob/master/FlappyChicken/screen00.png)
+
+![alt text](https://github.com/XinZouS/iOSdemo_flappyBirdInStevens/blob/master/FlappyChicken/scr02.png)
+
+![alt text](https://github.com/XinZouS/iOSdemo_flappyBirdInStevens/blob/master/FlappyChicken/scr03.png)
 
