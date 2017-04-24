@@ -17,7 +17,7 @@ class HintPageNode : SKSpriteNode {
     var backgroundNode : SKSpriteNode = {
         let b = SKSpriteNode()
         b.color = .black
-        b.alpha = 0.8
+        b.alpha = 0.7
         return b
     }()
     
@@ -44,7 +44,7 @@ class HintPageNode : SKSpriteNode {
     func setCurrPage(num:Int, total:Int){
         currPage = num
         totalPages = total
-        pageNumLabel.text = "Hint \(currPage!)/\(totalPages!)"
+        pageNumLabel.text = "💡 \(currPage!)/\(totalPages!)"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -96,21 +96,115 @@ class HintPages : SKSpriteNode {
         str.fontName = fontAmericanTypewriterB
         str.fontSize = 70
         str.fontColor = .yellow
-        str.position = CGPoint(x: 0, y: 300)
+        str.position = CGPoint(x: 0, y: 360)
         p.addChild(str)
         
         return p
     }()
     
     private var page03 : HintPageNode = {
-        let p = HintPageNode(color: .black, size: .zero)
-        p.alpha = 0.8
+        let p = HintPageNode()
+        let scrW = UIScreen.main.bounds.width // 0.5 of real size
+        let scrH = UIScreen.main.bounds.height
+        
+        let ptrHeart = SKSpriteNode(imageNamed: "pointer_upRight")
+        ptrHeart.position = CGPoint(x: -122, y: scrH - 150)
+        p.addChild(ptrHeart)
+        
+        let healthLabel = SKLabelNode(text: "❤️Health")
+        healthLabel.position = CGPoint(x: -150, y: scrH - 330)
+        healthLabel.fontName = fontAmericanTypewriterB
+        healthLabel.fontSize = 70
+        healthLabel.fontColor = .orange
+        p.addChild(healthLabel)
+        
+        let ptrScore = SKSpriteNode(imageNamed: "pointer_upLeft")
+        ptrScore.position = CGPoint(x: 160, y: scrH - 280)
+        p.addChild(ptrScore)
+
+        let scoreLabel = SKLabelNode(text: "Your Score")
+        scoreLabel.position = CGPoint(x: 160, y: scrH - 460)
+        scoreLabel.fontName = fontAmericanTypewriterB
+        scoreLabel.fontSize = 70
+        scoreLabel.fontColor = .yellow
+        p.addChild(scoreLabel)
+        
+        let eatLabel = SKLabelNode(text: "Food for more score:")
+        eatLabel.position = CGPoint(x: 0, y: scrH - 600)
+        eatLabel.fontName = fontAmericanTypewriterB
+        eatLabel.fontSize = 60
+        eatLabel.fontColor = .green
+        p.addChild(eatLabel)
+        
+        let squrrNode = SKSpriteNode(imageNamed: "squrral")
+        squrrNode.position = CGPoint(x: -260, y: scrH - 800)
+        p.addChild(squrrNode)
+        
+        let foodSize: CGFloat = 100
+        let food1 = SKLabelNode(text: "🌰")
+        food1.fontSize = foodSize
+        food1.position = CGPoint(x: -100, y: scrH - 750)
+        p.addChild(food1)
+        
+        let food2 = SKLabelNode(text: "🍖")
+        food2.fontSize = foodSize
+        food2.position = CGPoint(x: -40, y: scrH - 920)
+        p.addChild(food2)
+        
+        let food3 = SKLabelNode(text: "🍕")
+        food3.fontSize = foodSize
+        food3.position = CGPoint(x: 60, y: scrH - 730)
+        p.addChild(food3)
+        
+        let food4 = SKLabelNode(text: "🌭")
+        food4.fontSize = foodSize
+        food4.position = CGPoint(x: 120, y: scrH - 900)
+        p.addChild(food4)
+        
+        let lightingLabel = SKLabelNode(text: "[⚡️] = Speed up 🚀")
+        lightingLabel.fontSize = 70
+        lightingLabel.fontColor = .yellow
+        lightingLabel.fontName = fontAmericanTypewriterB
+        lightingLabel.position = CGPoint(x: 0, y: scrH - 1050)
+        p.addChild(lightingLabel)
 
         return p
     }()
     
     private var page04 : HintPageNode = {
-        let p = HintPageNode(color: .red, size: .zero)
+        let p = HintPageNode()
+        let scrW = UIScreen.main.bounds.width // 0.5 of real size
+        let scrH = UIScreen.main.bounds.height
+        
+        let beatRecord = SKLabelNode(text: "Break your record🥇")
+        beatRecord.fontColor = .white
+        beatRecord.fontSize = 60
+        beatRecord.fontName = fontAmericanTypewriterB
+        beatRecord.position = CGPoint(x: 0, y: 200)
+        p.addChild(beatRecord)
+        
+        let ptrMusic = SKSpriteNode(imageNamed: "pointer_downLeft")
+        ptrMusic.position = CGPoint(x: -scrW + 180, y: -scrH + 230)
+        p.addChild(ptrMusic)
+        
+        let ptrLab = SKLabelNode(text: "Music On/Off")
+        ptrLab.fontName = fontAmericanTypewriterB
+        ptrLab.fontColor = .yellow
+        ptrLab.fontSize = 70
+        ptrLab.position = CGPoint(x: -60, y: -scrH + 360)
+        p.addChild(ptrLab)
+        
+        let squrrNode = SKSpriteNode(imageNamed: "squrral")
+        squrrNode.position = CGPoint(x: 0, y: 0)
+        p.addChild(squrrNode)
+        
+        for _ in (1...6) {
+            let start1 = SKLabelNode(text: "⭐️")
+            start1.fontSize = 60 + CGFloat(drand48() * 40)
+            start1.position = CGPoint(x: drand48() * 500 - 200, y: drand48() * 600 - 200)
+            p.addChild(start1)
+        }
+        
         return p
     }()
     

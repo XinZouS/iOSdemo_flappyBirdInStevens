@@ -100,6 +100,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(heartLabel)
         heartLabel.run(SKAction.move(to: CGPoint(x: self.frame.midX, y: self.frame.maxY - 70), duration: 0.5))
         
+        musicIsMuted = UserDefaults.standard.object(forKey: "musicIsMuted") as! Bool
         musicMuteLable.text = musicIsMuted ? musicMuteIcon : musicPlayIcon
         musicMuteLable.fontSize = 80
         musicMuteLable.position = CGPoint(x: self.frame.minX + 70, y: self.frame.minY + 100)
